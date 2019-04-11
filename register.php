@@ -90,7 +90,38 @@ if (strlen($password > 30 || strlen($password) < 5)) {
     array_push($error_array,"Your password must be between 5 and 30 characters<br>");
 }
 
+if (empty($error_array)) {
+    $password = md5($password); // Encrypt password before sending to database
+// generate username by concatenating first name and last name
+    $username = strtolower($fname . "_" . $lname);
+    $check_username_query = mysqli_query($con, "SELECT username FROM users WHERE username='$username'");
 
+    $i = 0;
+// if username exists add a number
+    while(mysqli_num_rows($check_username_query) != 0) {
+        $i++;
+        $username = $username . "_" . $i;
+        $check_username_query = mysqli_query($con, "SELECT username FROM users WHERE username='$username'");
+    }
+
+    // Profile picture managment
+    $rand = rand(1, 2); 
+
+    if ($rand == 1)
+    $profile_pic = "assets/images/profile_pics/defaults/head_deep_blue.png";
+
+    else if ($rand == 2) {
+    $profile_pic = "assets/images/profile_pics/defaults/head_emerald.png"; }
+
+    $query = mysqli_query($con, "INSERT INTO users VALUES ('', '$fname', '$lname', '$username', '$email', '$password', '$date', '$profile_pic', '0', '0', 'no', ',')");
+
+    array_push($error_array, "<span style='color: #14C800;'> You registered correctly. </span><br>");
+
+    $_SESSION['reg_fname'] = "";
+    $_SESSION['reg_lname'] = "";
+    $_SESSION['reg_email'] = "";
+    $_SESSION['reg_email2'] = "";
+} 
 
 
 }
@@ -157,6 +188,13 @@ if (strlen($password > 30 || strlen($password) < 5)) {
         else if (in_array("Your password must be between 5 and 30 characters<br>", $error_array)) echo "Your password must be between 5 and 30 characters<br>"; ?>
 
         <input type="submit" name="register_button" value="Register">
+
+        <?php if (in_array("<span style='color: #14C800;'> You registered correctly. </span><br>", $error_array)) echo "<span style='color: #14C800;'> You registered correctly. </span><br>"; ?>
+
+        
+
+
+
     </form>
 
 
