@@ -1,18 +1,8 @@
 <?php
 
-$user = "root";
-$pass = "";
-$name = "localhost";
-$db = "social";
-
-$con = mysqli_connect($name, $user, $pass, $db);
-
-if (mysqli_connect_errno()) {
-    echo "Fail to connect" . mysqli_connect_errorno();
-}
+require 'config/config.php';
 
 
-$sql = mysqli_query($con, "INSERT INTO test VALUES(NULL, 'Super')");
 
 ?>
 
