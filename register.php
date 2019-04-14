@@ -20,7 +20,7 @@ require 'includes/form_handlers/login_handler.php';
 
 
 <body>
-            // keep register form id="first" show
+          <!-- keep register form id="first" show -->
     <?php
         if (isset($_POST['register_button'])) {
             echo '
