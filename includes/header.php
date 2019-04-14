@@ -52,5 +52,5 @@ else {
                 <i class="fa fa-sign-out-alt fa-lg"></i></a>
        </nav>
     </div>
-</body>
-</html>
+
+    <div class="wrapper">
