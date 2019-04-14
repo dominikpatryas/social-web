@@ -1,6 +1,5 @@
 <?php
 include("includes/header.php");
-session_destroy();
 
 ?>
 
@@ -11,7 +10,7 @@ session_destroy();
 </head>
 
 <body>
-heelo    
+heelo  <?php echo $user['first_name']; ?>
 </body>
 
 </html>
