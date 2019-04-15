@@ -35,7 +35,7 @@ else {
             <a href="index.php">Swirlfeed</a>
         </div>
        <nav>
-       <a href="#">
+       <a href="<?php echo $userLoggedIn ?>">
                <?php echo $user['first_name']; ?>
             </a>
            <a href="index.php">
@@ -48,7 +48,7 @@ else {
                <i class="fa fa-users fa-lg"></i></a>
            <a href="#">
                <i class="fa fa-cog fa-lg"></i></a>
-            <a href="#">
+            <a href="includes/handlers/logout.php">
                 <i class="fa fa-sign-out-alt fa-lg"></i></a>
        </nav>
     </div>
