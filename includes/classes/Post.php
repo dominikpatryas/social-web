@@ -150,7 +150,8 @@ class Post {
                         <br>
                     </div>
 
-                </div>";  
+                </div>
+                <hr>";  
         }
        
         echo $str;
