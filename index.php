@@ -9,6 +9,8 @@ if(isset($_POST['post'])){
 	$post->submitPost($_POST['post_text'], 'none');
 }
 
+// $user full row
+
 
  ?>
 	<div class="user_details column">
