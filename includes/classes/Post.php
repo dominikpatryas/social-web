@@ -115,8 +115,8 @@ class Post {
 						function toggle<?php echo $id; ?>(event){
 								
 							var target = $(event.target);
-						 
-							if (!target.is('a') && !target.is('button')) {
+							if (!target.is("a")) {
+
 								var element = document.getElementById("toggleComment<?php echo $id; ?>");
 						 
 								if(element.style.display == "block")
@@ -124,8 +124,11 @@ class Post {
 								else
 									element.style.display = "block";
 							}
+							}
+						 
+
 														
-						}
+						
 	 
 					</script>
 					<?php
@@ -209,8 +212,12 @@ class Post {
 								<div id='post_body'>
 									$body
 									<br>
+									<br>
 								</div>
 	 
+								<div class='newsfeedPostOptions' >
+									Comments($comments_check_num)&nbsp;&nbsp;&nbsp;
+								</div>
 								
 							</div>
 							<div class='post_comment' id='toggleComment$id' style='display:none;'>
