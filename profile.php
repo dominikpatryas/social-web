@@ -36,18 +36,20 @@ if (isset($_GET['profile_username'])) {
        
        $logged_user_obj = new User($con, $userLoggedIn);
 
-        if ($logged_user_obj->isFriend($username) && $userLoggedIn != $username) {
+       if ($userLoggedIn != $username) {
+
+        if ($logged_user_obj->isFriend($username)) {
             echo '<input type="submit" name="remove_friend" class="danger" value="Remove friend"><br>';
         }
-        else if ($logged_user_obj->didReceiveRequest($username) && $userLoggedIn != $username) {
+        else if ($logged_user_obj->didReceiveRequest($username)) {
             echo '<input type="submit" name="respond_request" class="danger" value="Respond to request"><br>';
         }
-        else if ($logged_user_obj->didSendRequest($username) && $userLoggedIn != $username) {
+        else if ($logged_user_obj->didSendRequest($username)) {
             echo '<input type="submit" name="" class="default" value="Request sent"><br>';
         }
         else
         echo '<input type="submit" name="add_friend" class="success" value="Add friend"><br>';
-
+    }
 
 
         

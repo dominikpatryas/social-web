@@ -78,6 +78,22 @@ class User {
         } else return false;
 
     }
+
+    public function removeFriend($friend_to_remove) {
+        $user_logged_in = $this->user['username'];
+
+        $query = mysqli_query($this->con, "SELECT friend_array FROM users WHERE username='$friend_to_remove'");
+        $row = mysqli_fetch_array($query);
+        $user_friend_array = $row['friend_array'];
+
+        $new_friend_array = str_replace($friend_to_remove . ",", "", $this->user['friend_array']);
+        $remove_friend = mysqli_query($this->con, "UPDATE users SET friend_array = $new_friend_array WHERE username='$user_logged_in'");
+
+        $new_friend_array = str_replace($this->user['username'] . ",", "", $user_friend_array);
+        $remove_friend = mysqli_query($this->con, "UPDATE users SET friend_array = $new_friend_array WHERE username='$friend_to_remove'");
+
+
+    }
 }
 
 
