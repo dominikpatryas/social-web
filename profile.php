@@ -40,6 +40,8 @@ if (isset($_POST['respond_request'])) {
 <div class="profile_left">
     <img src="<?php echo $user_array['profile_pic']; ?>" alt="">
     <div class="profile_info">
+      <p>  <?php echo "Username: " . $username; ?></p>
+
         <p><?php echo "Posts: " . $user_array['num_posts']; ?></p>
         <p><?php echo "Likes: " . $user_array['num_likes']; ?></p>
         <p><?php echo "Friends: " . $num_friends; ?></p>
@@ -66,15 +68,11 @@ if (isset($_POST['respond_request'])) {
         else
         echo '<input type="submit" name="add_friend" class="success" value="Add friend"><br>';
     }
-
-
-        
-       
        ?>
 
-        
     </form>
 
+    <input type="submit" class="deep_blue" data-toggle="modal" data-target="#post_form" value="Post something">
 
 </div>
 
@@ -82,9 +80,41 @@ if (isset($_POST['respond_request'])) {
 
 
 <div class="main_column column">
-    <?php echo $username; ?>
-</div>
 
+</div>
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="post_form" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Post something!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>This will apear somewhere.</p>
+      </div>
+
+    <form action="" class="profile_post" method="POST">
+        <div class="form_group">
+            <textarea name="post_body" class="form-control"></textarea>
+            <input type="hidden" name="user_from" value="<?php echo $userLoggedIn; ?>">
+            <input type="hidden" name="user_to" value="<?php echo $username; ?>">
+
+        </div>
+    </form>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">P0ST</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 </div>
 
