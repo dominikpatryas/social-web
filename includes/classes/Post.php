@@ -208,6 +208,7 @@ class Post {
 	 
 								<div class='posted_by' style='color:#ACACAC;'>
 									<a href='$added_by'> $first_name $last_name </a> $user_to &nbsp;&nbsp;&nbsp;&nbsp;$time_message
+									$delete_button
 								</div>
 								<div id='post_body'>
 									$body
@@ -227,7 +228,25 @@ class Post {
 							</div>
 							<hr>";
 				}
-	 
+				?>
+
+				<script>
+				
+				$(document).ready(function(){
+
+					$('#post<?php echo $id; ?>').on('click', function(){
+						bootbox.confirm("Are u sure u want to delete", function(result) {
+							$.post("includes/form_handlers/delete_post.php?post_id=<?php echo $id; ?>", {result: result});
+
+							if (result) location.reload();
+						});
+					});
+
+				});
+				
+				</script>
+
+				<?php
 				
 	 
 			} //End while loop
