@@ -110,7 +110,7 @@ if (isset($_POST['respond_request'])) {
 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">P0ST</button>
+        <button type="button" class="btn btn-primary" name="post_button" id="submit_profile_post">P0ST</button>
       </div>
     </div>
   </div>
