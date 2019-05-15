@@ -7,7 +7,7 @@ class Message {
 		$this->con = $con;
 		$this->user_obj = new User($con, $user);
 	}
-
+ 
     public function getMostRecentUser() {
         $userLoggedIn = $this->user_obj->getUsername();
 
