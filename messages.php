@@ -50,11 +50,17 @@ if ($user_to != "new") {
         <?php 
             if ($user_to != "new") {
                 echo "<h4> You and <a href='$user_to'>" . $user_to_obj->getFirstAndLastName() . "</a></h4><hr><br>";
+                echo "<div class='loaded_messages' id='scroll_message'>";
+                echo $message_obj->getMessages($user_to);
+                echo "</div>";
+            }
+            else {
+                echo "<h4>New message</h4>";
             }
         ?>
 
 
-<div class="loaded_messages">
+<div class="messages_post">
     <form action="" method="POST">
         <?php
             if ($user_to == "new") {
@@ -69,4 +75,11 @@ if ($user_to != "new") {
         ?>
     </form>
 </div>
+
+<script>
+                    // Scroll to newest message
+    var div = document.getElementById("scroll_message");
+    div.scrollTop = div.scrollHeight;
+
+</script>
     </div>

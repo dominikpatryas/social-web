@@ -306,3 +306,54 @@ nav a:hover {
 .profile_info_bottom {
     margin: 10px 0 0 10px;
 }
+
+#message_area {
+    width: 80% ;
+    margin-right: 8px;
+    border-radius: 5px;
+    border: 1px solid #d3d3d3;
+    font-size: 12px;
+}
+
+#message_submit {
+    height: 54px;
+    width: 120px;
+    margin: 0;
+    position: absolute;
+    border: none;
+    background-color: #20aae5;
+    color: #156588;
+    border-radius: 5px;
+    font-family: 'Bellota-BoldItalic', sans-serif;
+    text-shadow: #37B0e9 0.5px  0.5px 0;
+}
+
+.message {
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 5px 10px;
+    display: inline-block;
+    color: #fff;
+}
+
+.message#blue {
+    background-color: #3498db;
+    border-color: #2980b9;
+    float: right;
+    margin-bottom: 5px;
+}
+
+.message#green {
+    background-color: #2ecc71;
+    border-color: green;
+    float: left;
+    margin-bottom: 5px;
+}
+
+.loaded_messages {
+    height: 65%;
+    min-height:300px;
+    max-height:400px;
+    overflow: scroll;
+    margin-bottom: 10px;
+}
