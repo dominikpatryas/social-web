@@ -15,6 +15,15 @@ if (isset($_GET['u'])) {
 if ($user_to != "new") {
     $user_to_obj = new User($con, $user_to);
 }
+
+    if (isset($_POST['post_message'])) {
+
+        if (isset($_POST['message_body'])) {
+            $body = mysqli_real_escape_string($con, $_POST['message_body']);
+            $date = date("Y-m-d H:i:s");
+            $message_obj->sendMessage($user_to, $body, $date);
+        }
+    }
 ?>
 
 
@@ -55,7 +64,7 @@ if ($user_to != "new") {
             } 
             else {
                 echo "<textarea name='message_body' id='message_area' placeholder='Write you message.....'> </textarea>";
-                echo "<input type='submit' name='post_message' class='info' id='message_submit' value='Send'";
+                echo "<input type='submit' name='post_message' class='info' id='message_submit' value='Send'>";
             }
         ?>
     </form>
