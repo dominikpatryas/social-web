@@ -50,13 +50,12 @@ class Message {
 
     public function getLatestMessage($userLoggedIn, $user2) {
         $details_array = array();
-
-        $query = mysqli_query($this->con, "SELECT body, user_to,date FROM messages WHERE (user_to='$userLoggedIn' AND user_from='$user2')
-        OR (user_to='$user2' AND user_from='$userLoggedIn') ORDER BY id DESC" );
-
+     
+        $query = mysqli_query($this->con, "SELECT body, user_to, date FROM messages WHERE (user_to='$userLoggedIn' AND user_from='$user2') OR (user_to='$user2' AND user_from='$userLoggedIn') ORDER BY id DESC LIMIT 1");
+     
         $row = mysqli_fetch_array($query);
         $sent_by = ($row['user_to'] == $userLoggedIn) ? "They said: " : "You said: ";
-
+     
         //Timeframe
         $date_time_now = date("Y-m-d H:i:s");
         $start_date = new DateTime($row['date']); //Time of post
@@ -78,15 +77,15 @@ class Message {
             else {
                 $days = $interval->d . " days ago";
             }
-
-
+     
+     
             if($interval->m == 1) {
-                $time_message = $interval->m . " month ". $days;
+                $time_message = $interval->m . " month". $days;
             }
             else {
-                $time_message = $interval->m . " months ". $days;
+                $time_message = $interval->m . " months". $days;
             }
-
+     
         }
         else if($interval->d >= 1) {
             if($interval->d == 1) {
@@ -124,12 +123,13 @@ class Message {
         array_push($details_array, $sent_by);
         array_push($details_array, $row['body']);
         array_push($details_array, $time_message);
-
+     
         return $details_array;
     }
 
     public function getConvos() {
         $userLoggedIn = $this->user_obj->getUsername();
+        $res ="";
         $result_string = "";
         $convos = array();
         $query = mysqli_query($this->con, "SELECT user_to, user_from FROM messages WHERE user_to='$userLoggedIn' OR user_from='$userLoggedIn'
@@ -146,13 +146,11 @@ class Message {
         foreach($convos as $username) {
             $user_found_obj = new User($this->con, $username);
             $lastest_message_details = $this->getLatestMessage($userLoggedIn, $username);
-        }
 
         $dots = (strlen($lastest_message_details[1] >= 12)) ? "..." : "";
         $split = str_split($lastest_message_details[1], 12);
         $split = $split[0] . $dots;
         
-        $res ="";
         $res .= "<a href='messages.php?u=$username'> <div class='user_found_messages'>
 			<img src='" . $user_found_obj->getProfilePic() . "' style='border-radius: 5px; margin-right: 5px;'>
 			" . $user_found_obj->getFirstAndLastName() . "
@@ -160,9 +158,16 @@ class Message {
 			<p id='grey' style='margin: 0;'>" . $lastest_message_details[0] . $split . " </p>
 			</div>
 			</a>";
+        }
 
         return $res;
     }
+
+
+
+
+
+    
 	
 }
 ?>
