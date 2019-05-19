@@ -65,7 +65,9 @@ if ($user_to != "new") {
         <?php
             if ($user_to == "new") {
                 echo "Select friend";
-                echo "To: <input type='text'>";
+               ?> To: <input type='text' onkeyup='getUsers(this.value, "<?php echo $userLoggedIn; ?>")' name='q' placeholder='Name'
+                autocomplete='off' id='search_text_input'>;
+                <?php
                 echo "<div class='results'></div>";
             } 
             else {
@@ -79,7 +81,10 @@ if ($user_to != "new") {
 <script>
                     // Scroll to newest message
     var div = document.getElementById("scroll_message");
-    div.scrollTop = div.scrollHeight;
+    
+    if(div != null) {
+        div.scrollTop = div.scrollHeight;
+    }
 </script>
 
        
