@@ -64,9 +64,9 @@ if ($user_to != "new") {
     <form action="" method="POST">
         <?php
             if ($user_to == "new") {
-                echo "Select friend";
-               ?> To: <input type='text' onkeyup='getUsers(this.value, "<?php echo $userLoggedIn; ?>")' name='q' placeholder='Name'
-                autocomplete='off' id='search_text_input'>;
+                echo "Select friend you would like to message <br><br>";
+               ?> <input type='text' onkeyup='getUsers(this.value, "<?php echo $userLoggedIn; ?>")' name='q' placeholder='Name'
+                autocomplete='off' id='search_text_input'>
                 <?php
                 echo "<div class='results'></div>";
             } 

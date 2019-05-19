@@ -380,3 +380,48 @@ nav a:hover {
 #grey {
     color: #8c8c8c;
 }
+
+.results {
+    background-color: #FFFFFF;
+    border: 1px solid #DADADA;
+    border-bottom: none;
+    width: 42%;
+     position: absolute;
+}
+ 
+.resultDisplay {
+    padding: 5px 4px 0px 4px;
+    height: 100px;
+    border-bottom: 1px solid #DADADA;
+}
+ 
+.resultDisplay a {
+    float: none;
+}
+ 
+.resultDisplay:hover {
+    background-color: #EBEBEB;
+    text-decoration: none;
+}
+ 
+.liveSearchText {
+    background-color : transparent;
+    color: #1485BD;    
+}
+ 
+.liveSearchText p{
+    margin: 0 0 0 10px;
+    font-size: 12px;
+}
+ 
+.resultDisplayPageText {
+    background-color : transparent;
+    color: #1485BD;
+}
+ 
+.liveSearchProfilePic img {
+    height: 53px;
+    border-radius: 25px;
+    margin: 1px 12px 0px 2px;
+    float: left;
+}
