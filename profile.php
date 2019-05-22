@@ -90,6 +90,36 @@ if (isset($_POST['respond_request'])) {
 
 
 <div class="main_column column">
+<ul class="nav nav-tabs" role="tablist" id="profileTabs">
+  <li class="nav-item">
+    <a class="nav-link active" href="#newsfeed_div" aria-controls="newsfeed_div" role="tab" data-toggle="tab">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#about_div"  aria-controls="about_div" role="tab" data-toggle="tab">Profile</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#messages_div"  aria-controls="messages_div" role="tab" data-toggle="tab">Messages</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+
+    <div role="tabpanel" class="tab-pane fade in active" id="newsfeed_div">
+      <div class="posts_area">
+        <img src="assets/images/icons/loading.gif" id="loading" >
+      </div>
+    </div>
+    <div role="tabpanel" class="tab-pane fade in active" id="about_div">
+      
+    </div>
+    <div role="tabpanel" class="tab-pane fade in active" id="messages_div">
+     
+    </div>
+
+
+</div>
+
+
 <div class="posts_area"></div>
 		<img id="loading" src="assets/images/icons/loading.gif">
 
