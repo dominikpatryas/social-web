@@ -105,23 +105,48 @@ if (isset($_POST['respond_request'])) {
 <div class="tab-content">
 
     <div role="tabpanel" class="tab-pane fade in active" id="newsfeed_div">
-      <div class="posts_area">
-        <img src="assets/images/icons/loading.gif" id="loading" >
-      </div>
+    <div class="posts_area"></div>
+
     </div>
     <div role="tabpanel" class="tab-pane fade in active" id="about_div">
       
     </div>
     <div role="tabpanel" class="tab-pane fade in active" id="messages_div">
-     
+    <?php 
+
+      $message_obj = new Message($con, $userLoggedIn);
+
+                echo "<h4> You and <a href='" . $username . "'>" . $profile_user_obj->getFirstAndLastName() . "</a></h4><hr><br>";
+                echo "<div class='loaded_messages' id='scroll_message'>";
+                echo $message_obj->getMessages($username);
+                echo "</div>";
+        ?>
+
+
+<div class="messages_post">
+    <form action="" method="POST">
+          
+                <textarea name='message_body' id='message_area' placeholder='Write you message.....'> </textarea>;
+              <input type='submit' name='post_message' class='info' id='message_submit' value='Send'>;
+      
+    </form>
+</div>
+
+<script>
+                    // Scroll to newest message
+    var div = document.getElementById("scroll_message");
+    
+    if(div != null) {
+        div.scrollTop = div.scrollHeight;
+    }
+</script>
     </div>
 
 
 </div>
 
 
-<div class="posts_area"></div>
-		<img id="loading" src="assets/images/icons/loading.gif">
+
 
 
 </div>
