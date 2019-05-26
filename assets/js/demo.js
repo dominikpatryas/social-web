@@ -25,7 +25,7 @@ function getUsers(value, user) {
 }
 
 function getDropdownData(user, type) {
-    if ($(".dropdown_data_window").css("height") == 0) {
+    if ($(".dropdown_data_window").css("height") == "0px") {
         var pageName;
 
         if (type == 'notification') {
@@ -39,7 +39,7 @@ function getDropdownData(user, type) {
         var ajaxreq = $.ajax({
             url: "includes/handlers/" + pageName,
             type: "POST",
-            data: "page=1&user=" + user,
+            data: "page=1&userLoggedIn=" + user,
             cache: false,
 
             success: function(response) {
