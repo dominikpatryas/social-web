@@ -4,6 +4,7 @@ require 'config/config.php';
 include("includes/classes/User.php");
 include("includes/classes/Post.php");
 include("includes/classes/Message.php");
+include("includes/classes/Notification.php");
 
 
 if (isset($_SESSION['username'])) {
@@ -42,15 +43,27 @@ else {
             <a href="index.php">Swirlfeed</a>
         </div>
        <nav>
+
+        <?php
+            $notifications = new Notification($con, $userLoggedIn);
+            $num_notifications = $notifications->getUnreadNumber();
+        ?>
+
+
        <a href="<?php echo $userLoggedIn ?>">
                <?php echo $user['first_name']; ?>
             </a>
            <a href="index.php">
                <i class="fa fa-home fa-lg"></i></a>
            <a href="javascript:void(0);" onclick="getDropdownData('<?php echo $userLoggedIn ?>', 'message')">
-               <i class="fa fa-envelope fa-lg"></i></a>
-           <a href="">
-               <i class="fa fa-bell-o fa-lg"></i></a>
+               <i class="fa fa-envelope fa-lg"></i>
+                
+            </a>
+           <a href="javascript:void(0);" onclick="getDropdownData('<?php echo $userLoggedIn ?>', 'notification')">
+               <i class="fa fa-bell-o fa-lg"></i>
+               <?php
+                   echo '<span class="notification-badge" id="unread_notification">' . $num_notifications . '</span>';
+                ?></a>
             <a href="requests.php">
                <i class="fa fa-users fa-lg"></i></a>
            <a href="#">
