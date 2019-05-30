@@ -16,7 +16,7 @@ class Post {
 		if($check_empty != "") {
 
 
-			//Current date and time
+			//Current date and time)
 			$date_added = date("Y-m-d H:i:s");
 			//Get username
 			$added_by = $this->user_obj->getUsername();
