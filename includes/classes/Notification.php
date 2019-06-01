@@ -21,7 +21,7 @@
         $userLoggedIn = $this->user_obj->getUsername();
         $userLoggedInName = $this->user_obj->getFirstAndLastName();
 
-        $date_time = new Date("Y-m-d H:i:s");
+        $date_time = new DateTime("Y-m-d H:i:s");
 
         switch($type) {
             case 'comment':
